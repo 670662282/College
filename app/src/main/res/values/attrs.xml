@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleView">
+        <attr name="tv_title" format="string"></attr>
+
+        <attr name="tv_right" format="string"></attr>
+
+        <attr name="tv_back_visibility" format="enum">
+            <enum name="visable" value="0"></enum>
+            <enum name="invisable" value="1"></enum>
+            <enum name ="gone" value="2"></enum>
+
+        </attr>
+
+        <attr name="tv_tv_right_visibility" format="enum">
+            <enum name="visable" value="0"></enum>
+            <enum name="invisable" value="1"></enum>
+            <enum name ="gone" value="2"></enum>
+
+        </attr>
+
+        <attr name="tv_img_right_back_visibility" format="enum">
+            <enum name="visable" value="0"></enum>
+            <enum name="invisable" value="1"></enum>
+            <enum name ="gone" value="2"></enum>
+
+        </attr>
+    </declare-styleable>
+    
+    <!--reference 表示引用  -->
+    <declare-styleable name="MEditText">
+        <attr name="me_lable_src" format="reference|color"/>
+            
+      
+        <attr name="me_hint" format="string"/>
+            
+      <!--由代码决定-->
+        <attr name="me_text" format="string"/>
+        <attr name="me_del_enable" format="boolean"/>
+        <attr name="me_eye_enable" format="boolean"/>
+        <attr name="me_input_type" format="enum">
+            <enum name="text" value="0"/>
+            <enum name="password" value="1"/>
+        </attr>
+
+        
+    </declare-styleable>
+</resources>

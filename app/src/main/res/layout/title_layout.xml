@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_height"
+    android:background="@drawable/divider_land"
+    >
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_frot_size"
+        android:layout_centerInParent="true"
+        android:text="大学生信息在线"
+        android:textColor="@color/title_color"
+        />
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/selector_back"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+
+        />
+    <TextView
+        android:id="@+id/text_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/title_frot_size_18"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:text="切换账号"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/title_color"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/img_right"
+        android:layout_width="@dimen/title_height"
+        android:layout_height="@dimen/title_height"
+        android:padding="8dp"
+        android:src="@drawable/photo_unlogin"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/title_color"
+        />
+
+
+
+
+
+</RelativeLayout>
