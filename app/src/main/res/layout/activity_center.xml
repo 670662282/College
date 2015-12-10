@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.jiangchen.college.views.TitleView
+        android:id="@+id/center_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_back_visibility="visable"
+        app:tv_tv_right_visibility="gone">
+
+    </com.jiangchen.college.views.TitleView>
+
+
+    <RelativeLayout
+        android:id="@+id/center_userinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/center_top_bg">
+
+        <com.jiangchen.college.views.CricleImageView
+            android:id="@+id/center_photo"
+            android:layout_width="@dimen/photo_70"
+            android:layout_height="@dimen/photo_70"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin_20"
+            app:cimg_instrokewidth="3dp"
+            app:cimg_outstrokewidth="3dp"
+            android:src="@drawable/photo_unlogin" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/center_photo"
+            android:layout_alignTop="@id/center_photo"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/center_photo"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/center_nick"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_frot_size_16" />
+
+            <TextView
+                android:id="@+id/center_account"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_frot_size_16" />
+
+            <TextView
+                android:id="@+id/center_school"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_frot_size_16" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/center_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="#CECECE"
+        android:dividerHeight="0.1dp"
+        android:listSelector="@android:color/transparent"
+        android:scrollbars="none">
+
+    </ListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5px"
+        android:background="#CECECE"
+        android:visibility="visible"/>
+
+    <Button
+        android:id="@+id/center_unlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        android:background="@drawable/selector_bt_bg_red"
+        android:text="退出登录"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/title_frot_size_18" />
+
+
+</LinearLayout>

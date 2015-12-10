@@ -11,6 +11,8 @@ import com.jiangchen.college.https.XUtils;
 
 /**
  * Created by Dell- on 2015/12/3 0003.
+ * BaseActivity 所有Activity的基类
+ * 它的基类是 FragmentActivity
  */
 public class BaseActivity extends FragmentActivity{
 
@@ -41,6 +43,7 @@ public class BaseActivity extends FragmentActivity{
                     XUtils.show(R.string.exit);
                     //2秒后设置isExit为false
                     handler.postDelayed(r, 2000);
+                    return false;
                 } else {
                     ActivityController.removeAllActivity();
                 }

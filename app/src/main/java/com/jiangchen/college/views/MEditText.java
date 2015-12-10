@@ -3,6 +3,7 @@ package com.jiangchen.college.views;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -13,13 +14,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.jiangchen.college.AssistantTool.MyTextWatcher;
 import com.jiangchen.college.R;
 
 
 /**
  * Created by Dell- on 2015/12/2 0002.
+ * 编辑框自定义控件 EditText
  */
-public class MEditText extends RelativeLayout implements View.OnTouchListener, TextWatcher, View.OnFocusChangeListener, View.OnClickListener {
+public class MEditText extends RelativeLayout implements View.OnTouchListener, View.OnFocusChangeListener, View.OnClickListener {
 
     private RelativeLayout rlRoot;
     private EditText etInput;
@@ -34,6 +37,7 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, T
 
     public static final int TYPE_TEXT = 0;
     public static final int TYPE_PASSWORD = 1;
+    public static final int TYPE_NUMBER = 2;
 
     public MEditText(Context context) {
         super(context);
@@ -65,12 +69,13 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, T
 
         //设置按下状态监听器
         etInput.setOnFocusChangeListener(this);
-        //编辑框添加文本改变监听器
-        etInput.addTextChangedListener(this);
+        //编辑框添加公有的文本改变 监听器
+        etInput.addTextChangedListener(delWatcher);
         //imgDel 设置点击监听器 点击的时候清空编辑框里面的内容
         imgDel.setOnClickListener(this);
         //设置 触摸监听器
         imgEye.setOnTouchListener(this);
+
         if (attrs == null) {
             return;
         }
@@ -79,6 +84,7 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, T
         final int N = typedArray.getIndexCount();
 
         for (int i = 0; i < N; i++) {
+            //得到每个自定义属性的资源id
             int index = typedArray.getIndex(i);
             switch (index) {
                 case R.styleable.MEditText_me_del_enable:
@@ -99,12 +105,37 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, T
                 case R.styleable.MEditText_me_input_type:
                     setTextType(typedArray.getInt(index, 0));
                     break;
+                case R.styleable.MEditText_me_maxlength:
+                    int max = typedArray.getInt(index, -1);
+                    if (max != -1) {
+                        setMaxLength(max);
+                    }
+                    break;
                 default:
                     break;
 
             }
         }
 
+
+    }
+
+    //默认的文本删除 监听
+    private MyTextWatcher delWatcher = new MyTextWatcher() {
+        @Override
+        public void afterTextChanged(Editable s) {
+            //文本改变后 文本长度大于0显示del控件
+            if (delEnable && s.length() > 0) {
+                imgDel.setVisibility(View.VISIBLE);
+            } else if (delEnable) {
+                imgDel.setVisibility(View.GONE);
+            }
+        }
+    };
+
+    //设置编辑框的最大长度
+    public void setMaxLength(int maxLength) {
+        etInput.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
 
     }
 
@@ -137,6 +168,10 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, T
                 etInput.setInputType(InputType.TYPE_CLASS_TEXT
                         | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 break;
+            case TYPE_NUMBER:
+                etInput.setInputType(InputType.TYPE_CLASS_NUMBER
+                        | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+                break;
             default:
                 break;
         }
@@ -163,7 +198,10 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, T
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         //设置选中状态
-        etInput.setSelected(hasFocus);
+        rlRoot.setSelected(hasFocus);
+
+
+       // etInput.setSelected(hasFocus);
         //按下的时候 当编辑框长度大于0 显示imgdel控件
         if (delEnable && hasFocus && etInput.getText().length() > 0) {
             imgDel.setVisibility(View.VISIBLE);
@@ -181,15 +219,6 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, T
 
     }
 
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-    }
 
 //    //当图片大小改变
 //    //对图片的宽度进行调整 使其保持一致
@@ -207,13 +236,10 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, T
 //
 //    }
 
-    @Override
-    public void afterTextChanged(Editable s) {
-        //文本改变后 文本长度大于0显示del控件
-        if (delEnable && s.length() > 0) {
-            imgDel.setVisibility(View.VISIBLE);
-        } else if (delEnable) {
-            imgDel.setVisibility(View.GONE);
-        }
+    //为编辑框添加新的文本监听器
+    public void addTextChangedListener(TextWatcher Watcher) {
+        etInput.addTextChangedListener(Watcher);
     }
+
+
 }

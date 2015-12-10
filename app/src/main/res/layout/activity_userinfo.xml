@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.jiangchen.college.views.TitleView
+        android:id="@+id/userinfo_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        app:tv_back_visibility="visable"
+        app:tv_title="个人信息" />
+
+    <com.jiangchen.college.views.UserInfoView
+        android:id="@+id/userinfo_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:usefinfo_label_text="头像"
+        app:userinfo_et_enable="false"
+        app:userinfo_et_init=""
+        app:userinfo_img_next_visibility="gone"
+        app:userinfo_img_visibility="visiable" />
+
+    <com.jiangchen.college.views.UserInfoView
+        android:id="@+id/userinfo_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:usefinfo_label_text="姓名"
+        app:userinfo_et_enable="false"
+        app:userinfo_img_next_visibility="gone"
+        app:userinfo_img_visibility="gone">
+
+    </com.jiangchen.college.views.UserInfoView>
+
+    <com.jiangchen.college.views.UserInfoView
+        android:id="@+id/userinfo_nick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:usefinfo_label_text="昵称"
+        app:userinfo_et_enable="false"
+        app:userinfo_img_next_visibility="gone"
+        app:userinfo_img_visibility="gone">
+
+    </com.jiangchen.college.views.UserInfoView>
+
+    <com.jiangchen.college.views.UserInfoView
+        android:id="@+id/userinfo_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:usefinfo_label_text="性别"
+        app:userinfo_et_enable="false"
+        app:userinfo_img_next_visibility="gone"
+        app:userinfo_img_visibility="gone">
+
+    </com.jiangchen.college.views.UserInfoView>
+
+
+    <Button
+        android:id="@+id/userinfo_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_30"
+        android:background="@drawable/selector_bt_bg_red"
+        android:text="保存"
+        android:textColor="@android:color/white" />
+</LinearLayout>

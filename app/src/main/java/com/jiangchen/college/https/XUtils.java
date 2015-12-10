@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.jiangchen.college.R;
+import com.jiangchen.college.utils.Loading;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.DbUtils;
 import com.lidroid.xutils.HttpUtils;
@@ -15,12 +16,15 @@ import com.lidroid.xutils.http.client.HttpRequest;
 
 /**
  * Created by Dell- on 2015/12/1 0001.
- * XUtils
+ * XUtils 第三方工具类
  */
 
 public class XUtils {
     //web网络服务端地址
-    private static final String U = "http//:localhost:8080/college_online";
+    public static final String U = "http://192.168.56.1:8080/college_15_11/";
+    public static final String LOGIN = "login";
+    public static final String REG = "register";
+    public static final String FEEDBACK= "feedback";
     private static BitmapUtils bitmapUtils;
     private static HttpUtils httpUtils;
     private static DbUtils dbUtils;
@@ -28,7 +32,7 @@ public class XUtils {
     private static HttpHandler httpHandler;
 
     //初始化工作 完成各个工具类对象的初始化
-    private static void init(Context context) {
+    public static void init(Context context) {
         XUtils.context = context;
         //初始化bitmapUtils 配置读取时候图片  读取失败图片 设置自动缓存到本地
         if (bitmapUtils == null) {
@@ -48,18 +52,18 @@ public class XUtils {
         }
 
     }
+
     //泛型类   封装了send Get方法
-    public static <T> void send(String url, RequestCallBack<T> callBack, boolean isLoading){
+    public static <T> void send(String url, RequestCallBack<T> callBack, boolean isLoading) {
         send(url, null, callBack, isLoading);
     }
-
 
 
     //泛型类   封装了send Post请求方法
     public static <T> void send(String url, RequestParams params, RequestCallBack<T> callBack, boolean isLoading) {
         //如果正在加载数据 则弹出对话框
         if (isLoading) {
-
+            Loading.show();
         }
         if (params == null) {
             httpHandler = httpUtils.send(HttpRequest.HttpMethod.GET, U + url, callBack);
@@ -68,6 +72,7 @@ public class XUtils {
 
         }
     }
+
     //暂停请求
     public static void cancel() {
         if (httpHandler != null) {
@@ -85,6 +90,10 @@ public class XUtils {
 
     public static void show(int resId) {
         Toast.makeText(context, resId, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void show(String str) {
+        Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
     }
 
 

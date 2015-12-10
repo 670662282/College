@@ -14,4 +14,21 @@
     <string name="exit">再按一次退出程序</string>
     <string name="xpwd">密码长度不符合，密码长度为6到20</string>
     <string name="xaccount">账号格式错误，请输入邮箱或者手机号</string>
+    <string name="data_format_error">格式错误</string>
+    <string name="network_error">网络请求错误</string>
+    <string name="no_data">无数据</string>
+    <string name="fast_regeister">快速注册</string>
+    <string name="reset_pwd">重置密码</string>
+    <string name="code_send_suc">验证码发送成功</string>
+    <string name="code_send_fail">验证码发送失败</string>
+    <string name="validate_code_error">验证码错误</string>
+    <string name="get_code">获取验证码</string>
+    <string name="pwd_format_error">密码长度不符合</string>
+    <string name="email_format_error">邮箱格式错误</string>
+    <string name="pwd_repwd_error">两次密码不一致，请重新输入</string>
+    <string name="data_load_error">数据读取失败！</string>
+    <string name="error_body_param">所上传的参数没有此字段</string>
+    <string name="text_minlength">字数需要在15字以上</string>
+    <string name="need_login">请先登录</string>
+    <string name="feedback_success">反馈成功</string>
 </resources>

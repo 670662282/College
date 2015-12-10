@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/medit_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:id="@+id/medit_root"
     android:background="@drawable/selector_medit_bg"
+    android:focusable="true"
     android:focusableInTouchMode="true">
 
     <EditText
@@ -12,52 +12,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/medit_lable"
         android:layout_toLeftOf="@+id/medit_end"
+        android:layout_toRightOf="@+id/medit_lable"
         android:background="@android:color/transparent"
-        android:textSize="@dimen/title_frot_size_18"
-        android:textColor="@color/title_color"
+        android:hint="hint"
+        android:lines="1"
         android:paddingBottom="@dimen/mEdit_padding_bottom"
         android:paddingTop="@dimen/mEdit_padding_top"
-        android:hint="hint"
-        />
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/title_frot_size_18" />
+
     <ImageView
         android:id="@id/medit_lable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/mEdit_padding_bottom"
-        android:paddingTop="@dimen/mEdit_padding_top"
+        android:layout_alignBottom="@id/medit_input"
         android:layout_alignTop="@id/medit_input"
-        android:layout_alignBottom="@id/medit_input"/>
+        android:paddingBottom="@dimen/mEdit_padding_bottom"
+        android:paddingTop="@dimen/mEdit_padding_top" />
 
     <LinearLayout
         android:id="@id/medit_end"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/medit_input"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@id/medit_input"
+        android:layout_marginRight="5dp"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/medit_eye"
-            android:src="@drawable/pwd_visiable"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:paddingBottom="@dimen/mEdit_padding_bottom"
             android:paddingTop="@dimen/mEdit_padding_top"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:src="@drawable/pwd_visiable"
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/medit_del"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:paddingBottom="@dimen/mEdit_padding_bottom"
             android:paddingTop="@dimen/mEdit_padding_top"
-            android:visibility="gone"
             android:src="@drawable/icon_del"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:visibility="gone" />
 
     </LinearLayout>
 </RelativeLayout>

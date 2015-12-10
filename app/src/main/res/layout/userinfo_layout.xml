@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <TextView
+        android:id="@+id/userinfo_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="9dp"
+        android:paddingTop="9dp"
+        android:text="label"
+
+        android:textSize="@dimen/title_frot_size_18" />
+
+
+    <EditText
+        android:id="@+id/userinfo_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/userinfo_label"
+        android:layout_alignTop="@id/userinfo_label"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_toLeftOf="@+id/userinfo_next"
+        android:layout_toRightOf="@id/userinfo_label"
+        android:background="@android:color/transparent"
+        android:enabled="false"
+        android:gravity="right"
+        android:hint="未设置"
+        android:paddingBottom="9dp"
+        android:paddingTop="9dp"
+        android:textSize="@dimen/title_frot_size_18" />
+
+
+    <ImageView
+        android:id="@+id/userinfo_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/userinfo_label"
+        android:layout_alignRight="@id/userinfo_info"
+        android:layout_alignTop="@id/userinfo_label"
+        android:layout_centerVertical="true"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        android:src="@drawable/photo_unlogin" />
+
+    <ImageView
+        android:id="@id/userinfo_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/userinfo_label"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/userinfo_label"
+
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        android:src="@drawable/next" />
+
+    <View
+        android:layout_below="@id/userinfo_label"
+        android:layout_width="match_parent"
+        android:layout_height="0.5px"
+        android:background="#CECECE"
+        android:visibility="visible"/>
+
+</RelativeLayout>

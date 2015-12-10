@@ -29,7 +29,7 @@ public class TitleView extends RelativeLayout {
         init(null);
 
     }
-
+    //AttributeSet attrs ?
     public TitleView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs);
@@ -134,6 +134,11 @@ public class TitleView extends RelativeLayout {
         XUtils.display(imageRight, currentUrl);
 
 
+    }
+
+
+    public void setTextRightVisibility(int visibility){
+        textRight.setVisibility(visibility);
     }
 
 }

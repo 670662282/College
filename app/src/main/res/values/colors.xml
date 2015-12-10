@@ -6,4 +6,6 @@
     <color name="title_color">#d60000</color>
     <color name="bt_pressed">#FFD6474A</color>
     <color name="dark_gray">#969696</color>
+    <color name="dark_half">#a0000000</color>
+    <color name="gray">#cdcdcd</color>
 </resources>

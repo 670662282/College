@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,51 +7,73 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-<com.jiangchen.college.views.TitleView
-    android:id="@+id/login_title"
-    app:tv_tv_right_visibility="visable"
-    app:tv_title="@string/app_name"
-    app:tv_right="@string/cut_login_mode"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    <com.jiangchen.college.views.TitleView
+        android:id="@+id/login_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_right="@string/cut_login_mode"
+        app:tv_title="@string/app_name"
+        app:tv_tv_right_visibility="visable" />
 
 
+    <com.jiangchen.college.views.MEditText
+        android:id="@+id/login_account"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:me_del_enable="true"
+        app:me_hint="@string/account"
+        app:me_lable_src="@drawable/selector_account" />
 
- <com.jiangchen.college.views.MEditText
-     android:id="@+id/login_account"
-     android:layout_marginLeft="@dimen/margin_20"
-     android:layout_marginRight="@dimen/margin_20"
-     app:me_lable_src="@drawable/selector_account"
-     app:me_del_enable="true"
-     app:me_hint="@string/account"
-     android:layout_width="match_parent"
-     android:layout_height="50dp"/>
-
-<com.jiangchen.college.views.MEditText
-    android:id="@+id/login_pwd"
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    app:me_hint="@string/pwd"
-    android:layout_marginLeft="@dimen/margin_20"
-    android:layout_marginRight="@dimen/margin_20"
-    app:me_del_enable="true"
-    app:me_eye_enable="true"
-    app:me_input_type="password"
-    app:me_lable_src="@drawable/selector_pwd"
-   />
-    
-    
-<Button
-    android:id="@+id/login_sign_in"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_30"
-    android:layout_marginLeft="@dimen/margin_20"
-    android:layout_marginRight="@dimen/margin_20"
-    android:textColor="@android:color/white"
-    android:text="@string/sgin_in"
-    android:background="@drawable/selector_bt_bg_red"/>
+    <com.jiangchen.college.views.MEditText
+        android:id="@+id/login_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:me_del_enable="true"
+        app:me_eye_enable="true"
+        app:me_hint="@string/pwd"
+        app:me_input_type="password"
+        app:me_lable_src="@drawable/selector_pwd"
+        app:me_maxlength="20" />
 
 
+    <Button
+        android:id="@+id/login_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_30"
+        android:background="@drawable/selector_bt_bg_red"
+        android:text="@string/sgin_in"
+        android:textColor="@android:color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/login_fast_regeister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/fast_regeister"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/title_frot_size_16" />
+
+        <TextView
+            android:id="@+id/login_reset_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/reset_pwd"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/title_frot_size_16" />
+
+    </RelativeLayout>
 
 </LinearLayout>

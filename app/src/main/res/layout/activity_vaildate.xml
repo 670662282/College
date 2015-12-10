@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".ValidateActivity">
 
     <com.jiangchen.college.views.TitleView
         android:id="@+id/vaildate_title"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:tv_right="@string/ok"
         app:tv_title="@string/app_name"
-        app:tv_tv_right_visibility="visable" />
+        app:tv_tv_right_visibility="gone" />
 
 
     <com.jiangchen.college.views.MEditText
@@ -23,8 +23,10 @@
         android:layout_marginLeft="@dimen/margin_20"
         android:layout_marginRight="@dimen/margin_20"
         app:me_del_enable="true"
+        app:me_hint="@string/phone"
+        app:me_input_type="number"
         app:me_lable_src="@drawable/selector_phone"
-        app:me_hint="@string/phone" />
+        app:me_maxlength="11" />
 
 
     <RelativeLayout
@@ -40,12 +42,13 @@
             android:layout_alignTop="@+id/vaildate_code"
             android:layout_marginRight="@dimen/margin_20"
             android:layout_marginTop="10dp"
+            android:background="@drawable/selector_bt_bg_red"
+            android:enabled="false"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:enabled="false"
-            android:background="@drawable/selector_bt_bg_red"
             android:text="获得验证码"
+            android:textColor="@color/selector_bt_bg"
             android:textSize="@dimen/title_frot_size_16" />
 
         <com.jiangchen.college.views.MEditText
@@ -57,9 +60,10 @@
             android:layout_toLeftOf="@id/vaildate_get_code"
             app:me_del_enable="true"
             app:me_eye_enable="true"
-            app:me_lable_src="@drawable/selector_code"
             app:me_hint="@string/vaildate_code"
-            app:me_input_type="password" />
+            app:me_input_type="number"
+            app:me_lable_src="@drawable/selector_code"
+            app:me_maxlength="4" />
 
 
     </RelativeLayout>

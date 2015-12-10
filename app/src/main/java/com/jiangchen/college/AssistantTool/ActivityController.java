@@ -8,7 +8,9 @@ import java.util.List;
 
 /**
  * Created by Dell- on 2015/12/3 0003.
- * 辅助工具类 收集所有activity
+ * 辅助工具类
+ *
+ * 添加Activity 删除Activity 删除所有Activity
  */
 public class ActivityController {
 
