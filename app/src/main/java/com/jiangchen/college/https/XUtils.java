@@ -24,7 +24,10 @@ public class XUtils {
     public static final String U = "http://192.168.56.1:8080/college_15_11/";
     public static final String LOGIN = "login";
     public static final String REG = "register";
-    public static final String FEEDBACK= "feedback";
+    public static final String FEEDBACK = "feedback";
+    public static final String UPDATE = "update";
+    public static final String RESETPWD = "resetpwd";
+
     private static BitmapUtils bitmapUtils;
     private static HttpUtils httpUtils;
     private static DbUtils dbUtils;

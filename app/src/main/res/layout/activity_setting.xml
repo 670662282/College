@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
 
     <com.jiangchen.college.views.TitleView
-        android:id="@+id/userinfo_title"
+        android:id="@+id/set_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_20"
@@ -38,13 +40,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:button="@drawable/selector_checkbox"
-            />
+            android:button="@drawable/selector_checkbox" />
 
     </RelativeLayout>
 
 
     <com.jiangchen.college.views.UserInfoView
+        android:id="@+id/set_version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_20"

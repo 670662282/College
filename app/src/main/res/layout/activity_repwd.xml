@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <com.jiangchen.college.views.TitleView
+        android:id="@+id/repwd_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_right="@string/ok"
+        app:tv_title="@string/repwds"
+        app:tv_tv_right_visibility="visable" />
+
+
+    <com.jiangchen.college.views.MEditText
+        android:id="@+id/repwd_oldpwd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:me_del_enable="true"
+        app:me_hint="@string/old_pwd"
+        app:me_input_type="password"
+        app:me_lable_src="@drawable/selector_pwd"
+        app:me_maxlength="20" />
+
+    <com.jiangchen.college.views.MEditText
+        android:id="@+id/repwd_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:me_del_enable="true"
+        app:me_eye_enable="true"
+        app:me_hint="@string/new_pwd"
+        app:me_input_type="password"
+        app:me_lable_src="@drawable/selector_pwd"
+        app:me_maxlength="20"
+
+        />
+
+    <com.jiangchen.college.views.MEditText
+        android:id="@+id/repwd_repwd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        app:me_del_enable="true"
+        app:me_eye_enable="true"
+        app:me_hint="@string/repwd"
+        app:me_input_type="password"
+        app:me_lable_src="@drawable/selector_pwd"
+        app:me_maxlength="20"
+
+        />
+
+
+</LinearLayout>

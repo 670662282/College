@@ -3,8 +3,10 @@ package com.jiangchen.college.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jiangchen.college.R;
+import com.jiangchen.college.https.XUtils;
 
 
 /**
@@ -22,14 +25,25 @@ public class UserInfoView extends RelativeLayout implements View.OnClickListener
     private static final int VISIABLE = 0;
     private static final int INVISIABLE = 1;
     private static final int GONE = 2;
+    private int values  = -1;
     private boolean etEnable;
 
     private OnClickListener l;
 
     private TextView label;
     private EditText etInput;
-    private ImageView imgView;
+    private CricleImageView imgView;
     private ImageView next;
+
+
+    public int getValues() {
+        return values;
+    }
+
+    public void setValues(int values) {
+        this.values = values;
+    }
+
 
     public UserInfoView(Context context) {
         super(context);
@@ -47,11 +61,13 @@ public class UserInfoView extends RelativeLayout implements View.OnClickListener
     }
 
 
+
+
     private void init(AttributeSet attrs) {
         LayoutInflater.from(getContext()).inflate(R.layout.userinfo_layout, this);
         label = (TextView) findViewById(R.id.userinfo_label);
         etInput = (EditText) findViewById(R.id.userinfo_info);
-        imgView = (ImageView) findViewById(R.id.userinfo_img);
+        imgView = (CricleImageView) findViewById(R.id.userinfo_img);
         next = (ImageView) findViewById(R.id.userinfo_next);
 
 
@@ -101,15 +117,25 @@ public class UserInfoView extends RelativeLayout implements View.OnClickListener
 
         }
 
-
+        array.recycle();
     }
 
 
+    public void setRightImageUri(String uri) {
+        XUtils.display(imgView, uri);
+    }
 
+    public void setRightImage(Bitmap bitmap) {
+        imgView.setImageBitmap(bitmap);
+    }
 
 
     public void setEnable(boolean enable) {
         etInput.setEnabled(enable);
+    }
+
+    public void setText(int resId) {
+        etInput.setText(resId);
     }
 
     public void setText(String text) {
@@ -142,6 +168,16 @@ public class UserInfoView extends RelativeLayout implements View.OnClickListener
 
     }
 
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        if (ev.getAction() == MotionEvent.ACTION_UP) {
+            onClick(this);
+        }
+        return true;
+    }
+
     @Override
     public void setOnClickListener(OnClickListener l) {
         this.l = l;
@@ -150,11 +186,14 @@ public class UserInfoView extends RelativeLayout implements View.OnClickListener
     @Override
     public void onClick(View v) {
         //当编辑框被禁用 和监听接口l 不等于空的时候
-        if (!etEnable && l != null) {
-            l.onClick(this);
+        if (!etEnable) {
+            if (l != null) {
+                l.onClick(this);
+            }
+
         } else {
             setEnable(true);
-           // 强制etInput焦点获取
+            // 强制etInput焦点获取
             etInput.requestFocus();
         }
     }

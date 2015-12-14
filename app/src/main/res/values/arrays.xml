@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="center_items">
+        <item>校内信息</item>
+        <item>账号与安全</item>
+        <item>系统设置</item>
+        <item>反馈意见</item>
+
+    </string-array>
+
+
+    <string-array name="role">
+        <item>学生</item>
+        <item>教师</item>
+        <item>辅导员</item>
+    </string-array>
+
+
+
+</resources>

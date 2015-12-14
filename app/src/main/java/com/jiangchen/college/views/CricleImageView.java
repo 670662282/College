@@ -27,9 +27,9 @@ public class CricleImageView extends ImageView {
     private int size;
     private Paint p;
     //内边距
-    private int inStroke;
+    private int inStroke = 0;
     //外边距
-    private int outStroke;
+    private int outStroke = 0;
 
     public CricleImageView(Context context) {
         super(context);
@@ -64,6 +64,7 @@ public class CricleImageView extends ImageView {
                         break;
                 }
             }
+            array.recycle();
 
         }
     }
@@ -88,7 +89,7 @@ public class CricleImageView extends ImageView {
                 //获取处理好的图片
                 srcbmp = createBitmap(srcbmp);
                 //一个size直径矩形 src可为空
-               // Rect src = new Rect(0, 0, size, size);
+                // Rect src = new Rect(0, 0, size, size);
                 // ？？？
                 //画到dst区域
                 Rect dst = new Rect((width - size) / 2, (height - size) / 2, (width + size) / 2, (height + size) / 2);

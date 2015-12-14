@@ -31,4 +31,13 @@
     <string name="text_minlength">字数需要在15字以上</string>
     <string name="need_login">请先登录</string>
     <string name="feedback_success">反馈成功</string>
+    <string name="no_set">未设置</string>
+    <string name="boy">男</string>
+    <string name="gril">女</string>
+    <string name="old_pwd">旧密码</string>
+    <string name="repwds">修改密码</string>
+    <string name="new_pwd">新密码</string>
+    <string name="update_phone_suc">绑定手机成功</string>
+    <string name="update_email">修改邮箱</string>
+    <string name="update_suc">修改成功</string>
 </resources>

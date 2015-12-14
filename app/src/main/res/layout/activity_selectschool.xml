@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@drawable/divider_title">
+
+
+        <EditText
+            android:id="@+id/select_etInput"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_height"
+            android:hint="请输入学校"
+            android:singleLine="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_20"
+            android:layout_marginRight="@dimen/margin_20"
+            android:layout_toLeftOf="@+id/select_search"
+            android:layout_toRightOf="@+id/select_back"
+            android:background="@drawable/bg_edittext_focused" />
+
+
+        <ImageView
+            android:id="@+id/select_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/selector_back" />
+
+        <ImageView
+            android:id="@+id/select_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_20"
+            android:src="@drawable/at_search_small_focus" />
+
+
+    </RelativeLayout>
+
+
+    <ListView
+        android:id="@+id/select_items"
+        android:layout_marginLeft="@dimen/margin_20"
+        android:layout_marginRight="@dimen/margin_20"
+        android:layout_width="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:listSelector="@color/gray"
+        android:dividerHeight="0.1dp"
+        android:divider="#CECECE"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+</LinearLayout>

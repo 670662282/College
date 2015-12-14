@@ -39,6 +39,7 @@ public abstract class BaseRequestCallBack<T> extends RequestCallBack<String> {
                     XUtils.show(R.string.no_data);
                 }
             } else {
+
                 XUtils.show(R.string.data_format_error);
             }
         } else {

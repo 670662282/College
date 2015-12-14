@@ -43,6 +43,7 @@ public class BaseActivity extends FragmentActivity{
                     XUtils.show(R.string.exit);
                     //2秒后设置isExit为false
                     handler.postDelayed(r, 2000);
+                    //这个事件“消失”
                     return false;
                 } else {
                     ActivityController.removeAllActivity();

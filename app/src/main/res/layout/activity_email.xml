@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <com.jiangchen.college.views.TitleView
+        android:id="@+id/email_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tv_right="@string/ok"
+        app:tv_title="@string/update_email"
+        app:tv_tv_right_visibility="visable" />
+
+
+    <com.jiangchen.college.views.MEditText
+        android:id="@+id/eamil_etinput"
+        app:me_del_enable="true"
+        app:me_hint="你的新邮箱地址"
+        android:layout_width="match_parent"
+        app:me_input_type="text"
+        app:me_lable_src="@drawable/selector_email"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:textSize="@dimen/title_frot_size_16"
+        android:layout_width="match_parent"
+        android:textColor="@android:color/darker_gray"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:text="请输入邮箱地址，您可以用验证过的邮箱地址重置密码"/>
+</LinearLayout>

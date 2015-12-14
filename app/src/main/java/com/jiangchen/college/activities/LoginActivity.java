@@ -1,9 +1,12 @@
 package com.jiangchen.college.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.jiangchen.college.AssistantTool.Code;
 import com.jiangchen.college.AssistantTool.Matchers;
 import com.jiangchen.college.Log.LogUtil;
 import com.jiangchen.college.R;
@@ -69,12 +72,12 @@ public class LoginActivity extends BaseActivity {
     @OnClick({R.id.login_fast_regeister, R.id.login_reset_pwd})
     public void onClick(View view) {
         switch (view.getId()) {
-            //跳转验证界面 为true表示注册 fals表示重置密码
+            //跳转验证界面
             case R.id.login_fast_regeister:
-                ValidateActivity.startActivity(this, true);
+                ValidateActivity.startActivity(this, Code.ACTION_REG);
                 break;
             case R.id.login_reset_pwd:
-                ValidateActivity.startActivity(this, false);
+                ValidateActivity.startActivity(this, Code.ACTION_RESETPWD);
                 break;
             default:
                 break;
@@ -133,6 +136,11 @@ public class LoginActivity extends BaseActivity {
 
             }
         }, true);
+    }
+
+
+    public static void startActivity(Context context){
+        context.startActivity(new Intent(context, LoginActivity.class));
     }
 
 

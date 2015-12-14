@@ -10,16 +10,21 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.jiangchen.college.AssistantTool.Code;
 import com.jiangchen.college.AssistantTool.CodeTimeTask;
 import com.jiangchen.college.AssistantTool.Matchers;
 import com.jiangchen.college.AssistantTool.MyTextWatcher;
 import com.jiangchen.college.Log.LogUtil;
 import com.jiangchen.college.R;
+import com.jiangchen.college.entity.Result;
+import com.jiangchen.college.entity.User;
+import com.jiangchen.college.https.BaseRequestCallBack;
 import com.jiangchen.college.https.XUtils;
 import com.jiangchen.college.utils.Loading;
 import com.jiangchen.college.views.MEditText;
 import com.jiangchen.college.views.TitleView;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 import cn.smssdk.EventHandler;
@@ -31,8 +36,6 @@ import cn.smssdk.SMSSDK;
  */
 public class ValidateActivity extends BaseActivity {
 
-    private static final String KEY = "d0a609fd276e";
-    private static final String SECRET = "50ddd7ec6ff40e817794179b00f1720c";
     private static String phone;
     @ViewInject(R.id.vaildate_title)
     private TitleView title;
@@ -56,7 +59,7 @@ public class ValidateActivity extends BaseActivity {
 
             }
             //验证码发送失败
-            if (msg.arg2 == 1){
+            if (msg.arg2 == 1) {
                 CodeTimeTask.getInstance().taskCancel();
             }
 
@@ -69,7 +72,7 @@ public class ValidateActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //初始化SMSSDK
-        SMSSDK.initSDK(this, KEY, SECRET);
+        SMSSDK.initSDK(this, Code.KEY, Code.SECRET);
 
         setContentView(R.layout.activity_vaildate);
         ViewUtils.inject(this);
@@ -82,11 +85,11 @@ public class ValidateActivity extends BaseActivity {
         //注册SMSSDK
         SMSSDK.registerEventHandler(eventHandler);
 
-        if (phone != null){
+        if (phone != null) {
             mPhone.setText(phone);
         }
 
-        if (CodeTimeTask.getInstance().isRun()){
+        if (CodeTimeTask.getInstance().isRun()) {
             CodeTimeTask.getInstance().startTimer(btToGetCode);
         }
 
@@ -106,15 +109,46 @@ public class ValidateActivity extends BaseActivity {
                     //提交验证码成功  对话框消失 跳转界面
                 } else if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                     Loading.dismiss();
-                    if (getIntent().getBooleanExtra("isReg", true)) {
-                        RegisterActivity.startActivity(ValidateActivity.this, phone);
-                    } else {
-                        ResetPwdActivity.startActivity(ValidateActivity.this, phone);
-                    }
-                    finish();
 
-                }else{
-                    XUtils.show("cuowua");
+
+                    switch (getIntent().getIntExtra("action", -1)) {
+                        case Code.ACTION_REG:
+                            RegisterActivity.startActivity(ValidateActivity.this, phone);
+                            break;
+                        case Code.ACTION_RESETPWD:
+                            ResetPwdActivity.startActivity(ValidateActivity.this, phone);
+                            break;
+                        case Code.ACTION_UPDATEPHONE:
+                            RequestParams params = new RequestParams();
+                            int uid =  ((MyApp) getApplication()).getUser().getUid();
+                            params.addBodyParameter("uid", String.valueOf(uid));
+                            params.addBodyParameter("phone", phone);
+                            XUtils.send(XUtils.UPDATE, params, new BaseRequestCallBack<Result<User>>() {
+                                @Override
+                                public void success(Result<User> data) {
+
+                                    if (data.state == Result.STATE_SUC){
+                                        if (data.data != null){
+                                            ((MyApp) getApplication()).setUser(data.data);
+                                            XUtils.show(R.string.update_phone_suc);
+                                        }else{
+
+                                        }
+
+                                    }
+
+                                }
+                            }, true);
+                            break;
+
+                        default:
+                            break;
+                    }
+
+
+
+                } else {
+                    XUtils.show("cuowu");
                 }
                 //结果失败
             } else {
@@ -131,6 +165,8 @@ public class ValidateActivity extends BaseActivity {
                 }
 
             }
+            //验证结束后关闭
+            finish();
 
         }
     };
@@ -185,19 +221,19 @@ public class ValidateActivity extends BaseActivity {
             }
         }
     };
+
     //获取验证码
     private void getCode() {
         phone = mPhone.getText().toString().trim();
-        if (phone.matches(Matchers.PHONE_MATCH)){
+        if (phone.matches(Matchers.PHONE_MATCH)) {
             SMSSDK.getVerificationCode("86", phone);
-            //空指针
             CodeTimeTask.getInstance().startTimer(btToGetCode);
         }
     }
 
-    public static void startActivity(Context context, boolean isReg) {
+    public static void startActivity(Context context, int action) {
         Intent in = new Intent(context, ValidateActivity.class)
-                .putExtra("isReg", isReg);
+                .putExtra("action", action);
         context.startActivity(in);
     }
 }

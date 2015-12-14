@@ -60,6 +60,45 @@ public class CenterActivity extends BaseActivity {
         centerUnlogin.setOnClickListener(clickLis);
         userInfo.setOnClickListener(clickLis);
 
+        centerListView.setAdapter(new MyAdapter(this));
+        centerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LogUtil.i("TAG", position + "==================");
+                switch (position) {
+                    case 0:
+                        XUtils.show("校内信息");
+                        SchoolInfoActivity.startActivityForResult(CenterActivity.this);
+                        break;
+                    case 1:
+                        XUtils.show("账号与安全");
+                        AccountSafeActivity.startActivity(CenterActivity.this);
+                        break;
+                    case 2:
+                        XUtils.show("系统设置");
+                        SettingActivity.startActivity(CenterActivity.this);
+                        break;
+                    case 3:
+                        XUtils.show("意见反馈");
+                        showFeckBack();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        init();
+        super.onResume();
+    }
+
+    public void init() {
         user = ((MyApp) getApplication()).getUser();
 
         if (user != null) {
@@ -73,33 +112,6 @@ public class CenterActivity extends BaseActivity {
                 XUtils.display(userPhoto, user.getPhotoUrl());
             }
         }
-
-        centerListView.setAdapter(new MyAdapter(this));
-        centerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LogUtil.i("TAG", position + "==================");
-                switch (position) {
-                    case 0:
-                        XUtils.show("校内信息");
-                        break;
-                    case 1:
-                        XUtils.show("账号与安全");
-                        break;
-                    case 2:
-                        XUtils.show("系统设置");
-                        break;
-                    case 3:
-                        XUtils.show("意见反馈");
-                        showFeckBack();
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
-
-
     }
 
     private void showFeckBack() {
@@ -164,8 +176,7 @@ public class CenterActivity extends BaseActivity {
                     break;
                 case R.id.center_userinfo:
                     XUtils.show("前往个人中心");
-                    UserInfoActivity.startActivity(CenterActivity.this);
-                    finish();
+                    UserInfoActivity.startActivityForResult(CenterActivity.this);
                     break;
                 default:
                     break;
@@ -177,4 +188,7 @@ public class CenterActivity extends BaseActivity {
         Intent in = new Intent(context, CenterActivity.class);
         context.startActivity(in);
     }
+
+
+
 }

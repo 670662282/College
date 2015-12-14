@@ -2,6 +2,7 @@ package com.jiangchen.college.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +19,8 @@ import com.jiangchen.college.https.XUtils;
  */
 public class TitleView extends RelativeLayout {
 
-    private  TextView textTitle;
-    private  TextView textRight;
+    private TextView textTitle;
+    private TextView textRight;
     private ImageView imageRight;
     private ImageView imageBack;
     private String currentUrl;
@@ -29,6 +30,7 @@ public class TitleView extends RelativeLayout {
         init(null);
 
     }
+
     //AttributeSet attrs ?
     public TitleView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -41,28 +43,28 @@ public class TitleView extends RelativeLayout {
         init(attrs);
     }
 
-    private void init(AttributeSet attrs){
-                
+    private void init(AttributeSet attrs) {
+
         LayoutInflater.from(getContext()).inflate(R.layout.title_layout, this);
         textTitle = (TextView) findViewById(R.id.text_title);
         textRight = (TextView) findViewById(R.id.text_right);
 
-        imageBack = (ImageView)findViewById(R.id.img_back);
-        imageRight = (ImageView)findViewById(R.id.img_right);
+        imageBack = (ImageView) findViewById(R.id.img_back);
+        imageRight = (ImageView) findViewById(R.id.img_right);
 
-        if  (attrs == null){
+        if (attrs == null) {
             return;
         }
 
 
-       TypedArray array =  getContext().obtainStyledAttributes(attrs, R.styleable.TitleView);
-       //获得数组的总数
-        final int N =  array.getIndexCount();
+        TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.TitleView);
+        //获得数组的总数
+        final int N = array.getIndexCount();
 
-        for (int i = 0 ; i < N; i++){
+        for (int i = 0; i < N; i++) {
             int index = array.getIndex(i);
 
-            switch (index){
+            switch (index) {
                 case R.styleable.TitleView_tv_back_visibility:
                     setVisibiliable(imageBack, array.getInt(index, 0));
                     break;
@@ -83,15 +85,13 @@ public class TitleView extends RelativeLayout {
                     break;
             }
         }
-
+        array.recycle();
     }
 
 
-    private  void setVisibiliable(View v, int visiable){
-
-        switch (visiable){
+    private void setVisibiliable(View v, int visiable) {
+        switch (visiable) {
             case 0:
-
                 v.setVisibility(View.VISIBLE);
                 break;
             case 1:
@@ -106,29 +106,29 @@ public class TitleView extends RelativeLayout {
     }
 
 
-    public void setTextTitle(String str){
+    public void setTextTitle(String str) {
         textTitle.setText(str);
     }
 
-    public void setTextRight(String str){
+    public void setTextRight(String str) {
         textRight.setText(str);
     }
 
-    public void setImageBackClickListener(View.OnClickListener l){
+    public void setImageBackClickListener(View.OnClickListener l) {
         imageBack.setOnClickListener(l);
     }
 
     //设置布局右侧的控件监听器 2 个控件同时只会显示一个
-    public void setRightClickListener(View.OnClickListener l){
+    public void setRightClickListener(View.OnClickListener l) {
         imageRight.setOnClickListener(l);
         textRight.setOnClickListener(l);
     }
 
     //如果地址不发生改变就不设置Image
-    public void setImageUrl(String url){
+    public void setImageUrl(String url) {
 
-        if (currentUrl.equals(url)){
-            return ;
+        if (currentUrl.equals(url)) {
+            return;
         }
         currentUrl = url;
         XUtils.display(imageRight, currentUrl);
@@ -137,8 +137,29 @@ public class TitleView extends RelativeLayout {
     }
 
 
-    public void setTextRightVisibility(int visibility){
+    public void setTextRightVisibility(int visibility) {
         textRight.setVisibility(visibility);
     }
+
+    public void setTextRightEnable(boolean enabled) {
+
+        if (enabled) {
+            if (!textRight.isEnabled()) {
+                textRight.setTextColor(Color.RED);
+                textRight.setEnabled(true);
+            }
+        } else {
+            if (textRight.isEnabled()) {
+                textRight.setTextColor(Color.GRAY);
+                textRight.setEnabled(false);
+            }
+        }
+
+    }
+
+    public boolean TextRightIsEnable() {
+        return textRight.isEnabled();
+    }
+
 
 }

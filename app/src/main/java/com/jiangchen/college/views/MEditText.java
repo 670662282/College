@@ -116,7 +116,7 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, V
 
             }
         }
-
+        typedArray.recycle();
 
     }
 
@@ -240,6 +240,9 @@ public class MEditText extends RelativeLayout implements View.OnTouchListener, V
     public void addTextChangedListener(TextWatcher Watcher) {
         etInput.addTextChangedListener(Watcher);
     }
+
+
+
 
 
 }

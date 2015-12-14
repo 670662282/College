@@ -23,7 +23,6 @@ public class MyAdapter extends BaseAdapter {
 
     public MyAdapter(Context context) {
         this.context = context;
-
     }
 
     @Override
@@ -44,17 +43,17 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder viewHolder = null;
-        View view = null;
+        final ViewHolder viewHolder;
+
+
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            view = LayoutInflater.from(context).inflate(R.layout.list_item, null);
-            viewHolder.centerIv = (ImageView) view.findViewById(R.id.list_item_iv);
-            viewHolder.centerTv = (TextView) view.findViewById(R.id.list_item_tv);
-            view.setTag(viewHolder);
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item, null);
+            viewHolder.centerIv = (ImageView) convertView.findViewById(R.id.list_item_iv);
+            viewHolder.centerTv = (TextView) convertView.findViewById(R.id.list_item_tv);
+            convertView.setTag(viewHolder);
         } else {
-            view = convertView;
-            viewHolder = (ViewHolder) view.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
 
@@ -62,14 +61,14 @@ public class MyAdapter extends BaseAdapter {
         viewHolder.centerIv.setImageResource(resId[position]);
 
 
-        return view;
+        return convertView;
     }
 
 
-    private class ViewHolder {
+    static class ViewHolder {
 
-        TextView centerTv;
-        ImageView centerIv;
+        public TextView centerTv;
+        public ImageView centerIv;
 
     }
 }

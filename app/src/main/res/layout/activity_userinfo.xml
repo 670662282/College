@@ -6,11 +6,10 @@
     android:orientation="vertical">
 
     <com.jiangchen.college.views.TitleView
-        android:id="@+id/userinfo_title"
+        android:id="@+id/userinfo_t"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_20"
-        app:tv_back_visibility="visable"
         app:tv_title="个人信息" />
 
     <com.jiangchen.college.views.UserInfoView
@@ -32,7 +31,7 @@
         android:layout_marginLeft="@dimen/margin_20"
         android:layout_marginRight="@dimen/margin_20"
         app:usefinfo_label_text="姓名"
-        app:userinfo_et_enable="false"
+        app:userinfo_et_enable="true"
         app:userinfo_img_next_visibility="gone"
         app:userinfo_img_visibility="gone">
 
@@ -45,7 +44,7 @@
         android:layout_marginLeft="@dimen/margin_20"
         android:layout_marginRight="@dimen/margin_20"
         app:usefinfo_label_text="昵称"
-        app:userinfo_et_enable="false"
+        app:userinfo_et_enable="true"
         app:userinfo_img_next_visibility="gone"
         app:userinfo_img_visibility="gone">
 

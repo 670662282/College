@@ -10,5 +10,14 @@ public class Matchers {
     public static String EMAIL_MATCH = "^\\w+@\\w+\\.(com|cn)$";
     public static String PWD_MATHCH = "^\\w{6,20}$";
     public static String JSON_MATHCH = "^\\{.*\\}$";
+    public static String SCHOOL_MATHCH = ".*(学校|学院|校区|大学)(校区)?";
+    public static String PHONE_BE_REPLOCE = "(\\d{3})\\d{6}(\\d{2})";
+    public static String PHONE_REPLOCEMENT = "$1******$2";
+
+
+
+    public static String replace(String phone){
+        return phone.replaceAll(Matchers.PHONE_BE_REPLOCE, Matchers.PHONE_REPLOCEMENT);
+    }
 
 }
